@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=lib
+includedir=include
+
+Name: libLAS
+Description: Library (C/C++) and tools for the LAS LiDAR format
+Requires:  geotiff
+Version: 1.8.2b1
+Libs: -L${libdir} -llas -llas_c
+Cflags: -I${includedir}/liblas 
+

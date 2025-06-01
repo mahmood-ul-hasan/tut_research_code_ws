@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['rope']
+
+roboflow:
+  workspace: trash-xadhu
+  project: object-detect-buhm2
+  version: 2
+  license: Private
+  url: https://app.roboflow.com/trash-xadhu/object-detect-buhm2/2
