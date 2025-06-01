@@ -1,0 +1,3 @@
+[submodule "CloudCompare"]
+	path = CloudCompare
+	url = https://gitlab.com/openfields1/cloudcompare.git

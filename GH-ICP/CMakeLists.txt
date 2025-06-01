@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 2.8)
+
+project(GHICP)
+
+SET(CMAKE_CXX_FLAGS "-O3 -std=c++14 -w -fopenmp -pthread")
+SET(CMAKE_C_FLAGS "-O3 -std=c++14 -fopenmp -pthread")
+
+#SET(CMAKE_BUILD_TYPE "Debug")
+
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+#PCL
+FIND_PACKAGE(PCL REQUIRED)
+IF(PCL_FOUND) 
+INCLUDE_DIRECTORIES(${PCL_INCLUDE_DIRS})
+ADD_DEFINITIONS(${PCL_DEFINITIONS})
+LIST(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
+message("PCL [OK]")
+ENDIF(PCL_FOUND)
+
+#libLas
+FIND_PACKAGE(libLAS REQUIRED)
+IF(libLAS_FOUND) 
+MESSAGE("LibLAS is found:"${LIBLAS_INCLUDE_DIR}) 
+INCLUDE_DIRECTORIES(${LIBLAS_INCLUDE_DIR})
+LINK_DIRECTORIES(${LIBLAS_LIBS})
+LINK_LIBRARIES("/usr/local/lib/liblas.so.2.4.0")
+ENDIF(libLAS_FOUND)
+
+# Find Boost
+find_package(Boost 1.71 REQUIRED COMPONENTS thread)
+
+#Head
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
+
+AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/src SRC_LIST)
+message("SRC_LIST is " ${SRC_LIST})
+
+SET(DEP_LIBS ${DEP_LIBS} ${PCL_LIBRARIES} ${LibLAS_LIBRARIES})
+
+#ADD_EXECUTABLE(ghicp test/ghicp_main.cpp)
+ADD_EXECUTABLE(ghicp test/ghicp_main.cpp ${SRC_LIST})
+TARGET_LINK_LIBRARIES(ghicp ${DEP_LIBS}) 
+target_link_libraries(ghicp Boost::thread)
+
+
+
