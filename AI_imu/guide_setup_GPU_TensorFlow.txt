@@ -1,0 +1,4 @@
+Step by step guide
+https://medium.com/analytics-vidhya/how-to-set-up-tensorflow-gpu-on-ubuntu-18-04-lts-7a09ffd5f30f#dcce
+https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
+https://markjay4k.github.io/Install-Tensorflow/
