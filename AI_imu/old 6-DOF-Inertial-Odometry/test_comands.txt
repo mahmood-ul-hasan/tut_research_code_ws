@@ -1,0 +1,21 @@
+# Test
+=============
+python3 test.py dataset model input gt
+python3 test.py oxiod 6dofio_oxiod.hdf5 "/mah/AI/6-DOF-Inertial-Odometry-master/Oxford Inertial Odometry Dataset/handheld/data1/syn/imu1.csv" "/mah/AI/6-DOF-Inertial-Odometry-master/Oxford Inertial Odometry Dataset/handheld/data1/syn/vi1.csv"
+python3 test.py euroc 6dofio_euroc.hdf5 "/mah/AI/6-DOF-Inertial-Odometry-master/MH_02_easy/mav0/imu0/data.csv" "/mah/AI/6-DOF-Inertial-Odometry-master/MH_02_easy/mav0/state_groundtruth_estimate0/data.csv"
+python3 test.py imu data_imu_rotate.hdf5 "data_imu_rotate.csv" "data_gt_rotate.csv"
+
+python3 test.py my_imu my_imu my_imu_accel_rotate.hdf5 "/mah/AI/6-DOF-Inertial-Odometry/6-DOF-Inertial-Odometry-master/data_imu_accel_rotate.csv"  "/mah/AI/6-DOF-Inertial-Odometry/6-DOF-Inertial-Odometry-master/data_gt_accel_rtotate.csv"
+
+# Evaluation
+==================
+python3 evaluate.py dataset model
+python3 evaluate.py oxiod  6dofio_oxiod.hdf5 "/mah/AI/6-DOF-Inertial-Odometry-master/Oxford Inertial Odometry Dataset/handheld/data1/syn/imu1.csv"
+
+# Train
+===============
+python train.py dataset output,
+python3 train.py euroc euroc_model.hdf5
+python3 -m tensorboard.main --logdir=logs/
+
+python3 train_my_imu.py my_imu my_imu_accel_rotate.hdf5
